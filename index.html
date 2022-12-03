@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background: #eee;
+      }
+
+      .wrapper {
+        margin-top: 30px;
+      }
+
+      .card {
+        border: 1px solid #eee;
+        cursor: pointer;
+      }
+
+      .weight {
+        margin-top: -65px;
+        transition: all 0.5s;
+      }
+
+      .weight small {
+        color: #e2dede;
+      }
+
+      .buttons {
+        padding: 10px;
+        background-color: #d6d4d44f;
+        border-radius: 4px;
+        position: relative;
+        margin-top: 7px;
+        opacity: 0;
+        transition: all 0.8s;
+      }
+
+      .dot {
+        height: 14px;
+        width: 14px;
+        background-color: green;
+        border-radius: 50%;
+        position: absolute;
+        left: 27%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 8px;
+        color: #fff;
+        opacity: 0;
+      }
+
+      .cart-button {
+        height: 48px;
+      }
+
+      .cart-button:focus {
+        box-shadow: none;
+      }
+
+      .cart {
+        position: relative;
+        height: 48px !important;
+        width: 50px;
+        margin-right: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        padding: 11px;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: 1s ease-in-out;
+        overflow: hidden;
+      }
+
+      .cart-button.clicked span.dot {
+        animation: item 0.3s ease-in forwards;
+      }
+
+      @keyframes item {
+        0% {
+          opacity: 1;
+          top: 30%;
+          left: 30%;
+        }
+
+        25% {
+          opacity: 1;
+          left: 26%;
+          top: 0%;
+        }
+
+        50% {
+          opacity: 1;
+          left: 23%;
+          top: -22%;
+        }
+
+        75% {
+          opacity: 1;
+          left: 19%;
+          top: -18%;
+        }
+
+        100% {
+          opacity: 1;
+          left: 14%;
+          top: 28%;
+        }
+      }
+
+      .card:hover .buttons {
+        opacity: 1;
+      }
+
+      .card:hover .weight {
+        margin-top: 10px;
+      }
+
+      .card:hover {
+        transform: scale(1.04);
+        z-index: 2;
+        overflow: hidden;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        const cartButtons = document.querySelectorAll(".cart-button");
+
+        cartButtons.forEach((button) => {
+          button.addEventListener("click", cartClick);
+        });
+
+        function cartClick() {
+          let button = this;
+          button.classList.add("clicked");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <nav
+        class="navbar navbar-light"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+        </div>
+      </nav>
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      ></div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://i.imgur.com/emb60L5.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.imgur.com/w2rCsEw.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://i.imgur.com/ZRUetRF.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        class="carousel-control-prev"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        style="background-color: rgba(0, 0, 0, 0.2)"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div>
+      <div class="wrapper">
+        <div class="container">
+          <div class="row g-1">
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/w2rCsEw.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/ZRUetRF.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/0M7pldG.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/emb60L5.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>20 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-1">
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/w2rCsEw.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/ZRUetRF.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/0M7pldG.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/emb60L5.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>20 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-1">
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/w2rCsEw.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/ZRUetRF.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/0M7pldG.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/emb60L5.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>20 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-1">
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/w2rCsEw.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/ZRUetRF.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/0M7pldG.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>1 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3">
+                <div class="text-center">
+                  <img src="https://i.imgur.com/emb60L5.jpg" width="200" />
+                </div>
+                <div class="product-details">
+                  <span class="font-weight-bold d-block">$ 7.00</span>
+                  <span>Red Redish</span>
+                  <div class="buttons d-flex flex-row">
+                    <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+                    <button class="btn btn-success cart-button btn-block">
+                      <span class="dot">1</span>Add to cart
+                    </button>
+                  </div>
+                  <div class="weight">
+                    <small>20 piece 2.5kg</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div
+          class="text-center p-3"
+          style="background-color: rgba(0, 0, 0, 0.2)"
+        >
+          © 2022 Copyright:
+          <a class="text-dark" href="https://mdbootstrap.com/">Footer</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+    </div>
+  </body>
+</html>
